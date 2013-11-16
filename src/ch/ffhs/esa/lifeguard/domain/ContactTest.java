@@ -1,4 +1,4 @@
-package ch.ffhs.esa.lifeguard.test.domain;
+package ch.ffhs.esa.lifeguard.domain;
 
 import ch.ffhs.esa.lifeguard.domain.Contact;
 import junit.framework.TestCase;
