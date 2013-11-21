@@ -47,7 +47,7 @@ public class ConfigurationTest extends TestCase {
 	public final void testGetSetDelay() {
 		assertEquals(100, configuration.getDelay());
 		configuration.setDelay(0);
-		assertEquals(100, configuration.getDelay()); // 0 is not allowed
+		assertEquals(60, configuration.getDelay()); // 0 is not allowed
 		configuration.setDelay(1000);
 		assertEquals(1000, configuration.getDelay());
 	}
