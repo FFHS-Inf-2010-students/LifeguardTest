@@ -1,5 +1,7 @@
 package ch.ffhs.esa.lifeguard.service;
 
+import ch.ffhs.esa.lifeguard.alarm.*;
+
 import android.test.ServiceTestCase;
 
 /**
