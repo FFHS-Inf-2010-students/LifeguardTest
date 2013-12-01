@@ -31,6 +31,7 @@ public class ConfigurationsTest extends AndroidTestCase {
 		= new RenamingDelegatingContext(getContext(), "test_");
 		this.db = new DatabaseHelper(context);
 		this.configurations = new Configurations(this.db);
+		Configuration configuration = new Configuration();
 	}
 
 	/* (non-Javadoc)
@@ -38,7 +39,7 @@ public class ConfigurationsTest extends AndroidTestCase {
 	 */
 	protected void tearDown() throws Exception {
 		super.tearDown();
-		this.db.getWritableDatabase().execSQL("DELETE FROM configurations");
+		this.db.getWritableDatabase().execSQL("DELETE FROM configurations;");
 		this.db.getWritableDatabase().execSQL("INSERT INTO configurations (delay) VALUES (60);");
 		this.configurations = null;
 		this.db.close();
@@ -52,7 +53,7 @@ public class ConfigurationsTest extends AndroidTestCase {
 		ConfigurationInterface c = new Configuration();
 		c.setDelay(70);
 		long id = this.configurations.persist(c);
-		assertEquals(1, id);
+		assertEquals(0, id);
 		assertEquals(70, c.getDelay());
 	}
 
@@ -66,7 +67,7 @@ public class ConfigurationsTest extends AndroidTestCase {
 		long id = this.configurations.persist(c);
 		
 		this.configurations.delete(c);
-		assertEquals(60, this.configurations.findById(id));
+		assertEquals(60, this.configurations.findById(id).getDelay());
 	}
 
 	/**
@@ -80,5 +81,6 @@ public class ConfigurationsTest extends AndroidTestCase {
 	 * Test method for {@link ch.ffhs.esa.lifeguard.domain.Configurations#findById(long)}.
 	 */
 	public final void testFindById() {
-		assertEquals(60, this.configurations.findById(-1));	}
+		assertEquals(60, (this.configurations.findById(0)).getDelay());
+		}
 }
