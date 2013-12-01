@@ -24,3 +24,6 @@ local.properties
 # OS X files
 .DS_Store
 ._*
+
+# Ant properties (they are individual)
+ant.properties
