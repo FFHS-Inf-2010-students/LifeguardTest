@@ -14,7 +14,7 @@ public class AwaitingStateTest extends TestCase {
 	
 	protected void setUp() throws Exception {
 		super.setUp();
-		state = new AwaitingState();
+		state = new AwaitingState("0793331122", 0);
 	}
 
 	protected void tearDown() throws Exception {
