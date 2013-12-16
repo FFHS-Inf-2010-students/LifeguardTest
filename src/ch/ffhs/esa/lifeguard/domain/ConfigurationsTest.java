@@ -3,11 +3,9 @@
  */
 package ch.ffhs.esa.lifeguard.domain;
 
-import java.util.List;
-
-import ch.ffhs.esa.lifeguard.persistence.DatabaseHelper;
 import android.test.AndroidTestCase;
 import android.test.RenamingDelegatingContext;
+import ch.ffhs.esa.lifeguard.persistence.DatabaseHelper;
 
 /**
  * Test case for Configurations
