@@ -4,9 +4,6 @@ import java.util.List;
 
 import android.test.AndroidTestCase;
 import android.test.RenamingDelegatingContext;
-import ch.ffhs.esa.lifeguard.domain.Contact;
-import ch.ffhs.esa.lifeguard.domain.ContactInterface;
-import ch.ffhs.esa.lifeguard.domain.Contacts;
 import ch.ffhs.esa.lifeguard.persistence.DatabaseHelper;
 
 /**
@@ -28,16 +25,14 @@ public class ContactsTest extends AndroidTestCase {
 			= new RenamingDelegatingContext(getContext(), "test_");
 		
 		this.db = new DatabaseHelper(context);
+		this.cleanDatabase();
 		this.contacts = new Contacts(this.db);
 	}
 
 	protected void tearDown() throws Exception {
 		super.tearDown();
-		this.db.getWritableDatabase().execSQL("DELETE FROM contacts");
-		this.db.getWritableDatabase().execSQL("INSERT INTO contacts (name, phone, position) VALUES ('Jane Doe', '0123456789', 1);");
-		this.db.getWritableDatabase().execSQL("INSERT INTO contacts (name, phone, position) VALUES ('John Doe', '0234567890', 2);");
+		this.cleanDatabase();
 		this.contacts = null;
-		this.db.close();
 	}
 
 	public final void testPersist() {
@@ -51,7 +46,7 @@ public class ContactsTest extends AndroidTestCase {
 
 	public final void testDelete() {
 		ContactInterface c = new Contact();
-		c.setName("Unit Test").setPhone("117");
+		c.setName("Unit Test").setPhone("117").setPosition(3);
 		
 		long id = this.contacts.persist(c);
 		assertEquals(3, id);
@@ -97,6 +92,15 @@ public class ContactsTest extends AndroidTestCase {
 		assertEquals("", contact.getName());
 		assertEquals("", contact.getPhone());
 		assertEquals(0, contact.getPosition());
+	}
+	
+	
+	private void cleanDatabase() {
+	    this.db.getWritableDatabase().execSQL("DELETE FROM contacts");
+        this.db.getWritableDatabase().execSQL("DELETE FROM sqlite_sequence WHERE NAME='contacts'");
+        this.db.getWritableDatabase().execSQL("INSERT INTO contacts (name, phone, position) VALUES ('Jane Doe', '0123456789', 1);");
+        this.db.getWritableDatabase().execSQL("INSERT INTO contacts (name, phone, position) VALUES ('John Doe', '0234567890', 2);");
+        this.db.close();
 	}
 
 }

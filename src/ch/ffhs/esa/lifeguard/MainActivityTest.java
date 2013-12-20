@@ -100,6 +100,7 @@ public class MainActivityTest
 		activity.openConfiguration();
 		Intent triggeredIntent = getStartedActivityIntent();
 		assertNotNull("Intent was null", triggeredIntent);
+		assertEquals(ConfigurationActivity.class.getName(), triggeredIntent.getComponent().getClassName());
 	}
 
 	/**
@@ -109,5 +110,6 @@ public class MainActivityTest
 		activity.viewContacts();
 		Intent triggeredIntent = getStartedActivityIntent();
         assertNotNull("Intent was null", triggeredIntent);
+        assertEquals(ContactListActivity.class.getName(), triggeredIntent.getComponent().getClassName());
 	}
 }
