@@ -13,7 +13,7 @@ import android.util.Log;
 /**
  * Test case for DatabaseHelper
  * 
- * @author 
+ * @author Juerg Gutknecht <juerg.gutknecht@students.ffhs.ch>
  *
  */
 public class DatabaseHelperTest extends AndroidTestCase {
