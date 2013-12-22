@@ -1,7 +1,7 @@
 package ch.ffhs.esa.lifeguard.service.state;
 
 import ch.ffhs.esa.lifeguard.alarm.state.*;
-
+import ch.ffhs.esa.lifeguard.domain.Contact;
 import junit.framework.TestCase;
 
 /**
@@ -14,7 +14,8 @@ public class ConfirmedStateTest extends TestCase {
 	
 	protected void setUp() throws Exception {
 		super.setUp();
-		state = new ConfirmedState();
+		Contact contact = new Contact ("Test", "0793369874");
+		state = new ConfirmedState(contact);
 	}
 
 	protected void tearDown() throws Exception {
