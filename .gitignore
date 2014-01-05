@@ -27,3 +27,6 @@ local.properties
 
 # Ant properties (they are individual)
 ant.properties
+
+# Maven build files
+target/
