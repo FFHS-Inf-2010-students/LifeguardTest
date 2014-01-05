@@ -50,16 +50,16 @@
     <build>
         <!-- <finalName>${project.artifactId}</finalName> -->
         <sourceDirectory>src</sourceDirectory>
-        <!-- <pluginManagement> -->
-            <!-- <plugins> -->
-                <!-- <plugin> -->
-                    <!-- <groupId>com.jayway.maven.plugins.android.generation2</groupId> -->
-                    <!-- <artifactId>android-maven-plugin</artifactId> -->
-                    <!-- <version>3.1.1</version> -->
-                    <!-- <extensions>true</extensions> -->
-                <!-- </plugin> -->
-            <!-- </plugins> -->
-        <!-- </pluginManagement> -->
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>com.jayway.maven.plugins.android.generation2</groupId>
+                    <artifactId>android-maven-plugin</artifactId>
+                    <version>3.1.1</version>
+                    <extensions>true</extensions>
+                </plugin>
+            </plugins>
+        </pluginManagement>
 
         <plugins>
 
